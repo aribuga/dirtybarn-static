@@ -450,6 +450,23 @@
   font-size: 0.72rem;
 }
 
+.store-footer__bottom > span:first-child {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.store-footer__bottom button {
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .store-overlay {
   position: fixed;
   z-index: 100;
