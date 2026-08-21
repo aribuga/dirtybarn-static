@@ -1,0 +1,173 @@
+---
+interface Props {
+  measurementId: string;
+  analyticsEnabled?: boolean;
+}
+
+const { measurementId, analyticsEnabled = false } = Astro.props;
+---
+
+<aside
+  class="analytics-consent"
+  data-analytics-consent
+  data-measurement-id={measurementId}
+  data-analytics-enabled={String(analyticsEnabled)}
+  aria-labelledby="analytics-consent-title"
+  hidden
+>
+  <p class="store-kicker">Optional analytics</p>
+  <h2 id="analytics-consent-title">Help us understand what is useful.</h2>
+  <p>
+    We use Google Analytics only if you allow it. You can reject analytics or
+    change your choice later.
+  </p>
+  <div class="analytics-consent__actions">
+    <button class="button button--primary" type="button" data-analytics-accept>
+      Allow analytics
+    </button>
+    <button class="button button--secondary" type="button" data-analytics-reject>
+      Reject
+    </button>
+  </div>
+  <a href="/privacy-policy/">Read the Privacy Policy</a>
+</aside>
+
+<script is:inline>
+  (() => {
+    const consentPanel = document.querySelector('[data-analytics-consent]');
+
+    if (!(consentPanel instanceof HTMLElement)) {
+      return;
+    }
+
+    const measurementId = consentPanel.dataset.measurementId;
+    const analyticsEnabled = consentPanel.dataset.analyticsEnabled === 'true';
+    const storageKey = 'dirtybarn_analytics_consent';
+    const acceptButton = consentPanel.querySelector('[data-analytics-accept]');
+    const rejectButton = consentPanel.querySelector('[data-analytics-reject]');
+
+    if (!measurementId) {
+      return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function gtag() {
+      window.dataLayer.push(arguments);
+    };
+
+    window.gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+
+    const readPreference = () => {
+      try {
+        return window.localStorage.getItem(storageKey);
+      } catch {
+        return null;
+      }
+    };
+
+    const savePreference = (preference) => {
+      try {
+        window.localStorage.setItem(storageKey, preference);
+      } catch {
+        // The choice still applies to the current page when storage is unavailable.
+      }
+    };
+
+    const showPanel = () => {
+      consentPanel.hidden = false;
+      requestAnimationFrame(() => {
+        consentPanel.classList.add('is-visible');
+      });
+    };
+
+    const hidePanel = () => {
+      consentPanel.classList.remove('is-visible');
+      window.setTimeout(() => {
+        consentPanel.hidden = true;
+      }, 180);
+    };
+
+    const loadAnalytics = () => {
+      window.gtag('consent', 'update', {
+        analytics_storage: 'granted',
+      });
+
+      if (!analyticsEnabled || document.querySelector('[data-google-analytics]')) {
+        return;
+      }
+
+      const analyticsScript = document.createElement('script');
+      analyticsScript.async = true;
+      analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+      analyticsScript.dataset.googleAnalytics = measurementId;
+      document.head.append(analyticsScript);
+
+      window.gtag('js', new Date());
+      window.gtag('config', measurementId, {
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false,
+      });
+    };
+
+    const clearAnalyticsCookies = () => {
+      const domainParts = window.location.hostname.split('.');
+      const rootDomain = domainParts.length > 1
+        ? `.${domainParts.slice(-2).join('.')}`
+        : window.location.hostname;
+
+      document.cookie.split(';').forEach((cookie) => {
+        const cookieName = cookie.split('=')[0]?.trim();
+
+        if (!cookieName || !/^_ga|^_gid|^_gat/.test(cookieName)) {
+          return;
+        }
+
+        document.cookie = `${cookieName}=; Max-Age=0; path=/`;
+        document.cookie = `${cookieName}=; Max-Age=0; path=/; domain=${rootDomain}`;
+      });
+    };
+
+    const acceptAnalytics = () => {
+      savePreference('granted');
+      loadAnalytics();
+      hidePanel();
+    };
+
+    const rejectAnalytics = () => {
+      const analyticsWasLoaded = Boolean(document.querySelector('[data-google-analytics]'));
+      savePreference('denied');
+      window.gtag('consent', 'update', {
+        analytics_storage: 'denied',
+      });
+      clearAnalyticsCookies();
+      hidePanel();
+
+      if (analyticsWasLoaded) {
+        window.location.reload();
+      }
+    };
+
+    acceptButton?.addEventListener('click', acceptAnalytics);
+    rejectButton?.addEventListener('click', rejectAnalytics);
+
+    document.querySelectorAll('[data-analytics-settings]').forEach((control) => {
+      control.addEventListener('click', () => {
+        showPanel();
+        window.setTimeout(() => acceptButton?.focus(), 0);
+      });
+    });
+
+    const savedPreference = readPreference();
+
+    if (savedPreference === 'granted') {
+      loadAnalytics();
+    } else if (savedPreference !== 'denied') {
+      showPanel();
+    }
+  })();
+</script>

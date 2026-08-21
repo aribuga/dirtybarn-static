@@ -1,12 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const lastUpdated = 'August 20, 2026';
+const lastUpdated = 'August 21, 2026';
 ---
 
 <BaseLayout
   title="Privacy Policy"
-  description="How Dirtybarn handles information on this static site, through Gumroad purchases, and if Google Analytics is enabled in the future."
+  description="How Dirtybarn handles information on this static site, through Gumroad purchases, and with consent-based Google Analytics."
   canonicalPath="/privacy-policy/"
 >
   <section class="store-shell privacy-hero">
@@ -15,20 +15,19 @@ const lastUpdated = 'August 20, 2026';
       <p class="privacy-hero__date">Last updated {lastUpdated}</p>
       <h1>A simple site, with a simple data footprint.</h1>
       <p class="privacy-hero__copy">
-        Dirtybarn is currently a static website. We do not operate user accounts,
-        an on-site checkout, a contact form, a newsletter sign-up, or a visitor
-        database on this site.
+        Dirtybarn is a static website. We do not operate user accounts, an on-site
+        checkout, a contact form, a newsletter sign-up, or a visitor database.
+        Optional Google Analytics remains off unless you allow it.
       </p>
     </div>
   </section>
 
   <section class="store-shell privacy-overview" aria-label="Privacy overview">
     <article>
-      <p class="store-kicker">On this site / Now</p>
-      <h2>No active analytics</h2>
+      <p class="store-kicker">On this site</p>
+      <h2>Consent-first analytics</h2>
       <p>
-        We do not currently run Google Analytics or another marketing tracker on
-        this site.
+        Google Analytics loads only after you choose to allow optional analytics.
       </p>
     </article>
     <article>
@@ -40,11 +39,10 @@ const lastUpdated = 'August 20, 2026';
       </p>
     </article>
     <article>
-      <p class="store-kicker">Later</p>
-      <h2>Analytics, if enabled</h2>
+      <p class="store-kicker">Your choice</p>
+      <h2>Change it anytime</h2>
       <p>
-        This policy explains what will change if we connect Google Analytics in
-        the future.
+        Reject analytics on the first visit or reopen Cookie settings in the footer.
       </p>
     </article>
   </section>
@@ -54,7 +52,7 @@ const lastUpdated = 'August 20, 2026';
       <p class="store-kicker">On this page</p>
       <a href="#information-now">Information handled now</a>
       <a href="#gumroad">Gumroad purchases</a>
-      <a href="#analytics">Future analytics</a>
+      <a href="#analytics">Google Analytics</a>
       <a href="#cookies">Cookies</a>
       <a href="#use-and-sharing">Use and sharing</a>
       <a href="#retention">Retention and security</a>
@@ -111,18 +109,19 @@ const lastUpdated = 'August 20, 2026';
 
       <section id="analytics">
         <p class="store-kicker">03</p>
-        <h2>Google Analytics — if enabled later</h2>
+        <h2>Google Analytics</h2>
         <p>
-          Google Analytics is not currently active on this site. If we enable it,
-          Google may use cookies or similar technologies to process information such
-          as device and browser details, approximate location, referring page, pages
-          viewed, interactions, and timestamps.
+          Dirtybarn uses Google Analytics 4 to understand how the site performs and
+          which pages are useful. It is optional: the Google Analytics tag does not
+          load unless you select “Allow analytics.” If allowed, Google may use
+          cookies or similar technologies to process device and browser details,
+          approximate location, referring page, pages viewed, interactions, and
+          timestamps.
         </p>
         <p>
-          We would use these aggregated insights to understand site performance and
-          which content is useful—not to sell your personal information. Where the
-          law requires consent, non-essential analytics will be activated only after
-          you have been given an appropriate choice.
+          We use these aggregated insights to understand site performance—not to
+          sell your personal information. Advertising storage, ad personalisation,
+          and Google signals are disabled in our site configuration.
         </p>
         <div class="privacy-policy__links">
           <a
@@ -144,17 +143,20 @@ const lastUpdated = 'August 20, 2026';
         <p class="store-kicker">04</p>
         <h2>Cookies and similar technologies</h2>
         <p>
-          Dirtybarn does not currently set optional analytics or advertising cookies
-          on this site. Essential technical storage may still be used by browsers,
-          hosting infrastructure, or external services where necessary to provide
-          and secure their services.
+          Before you make a choice, Dirtybarn does not load Google Analytics or set
+          its optional analytics cookies. We store your analytics preference in your
+          browser's local storage so the site can remember it. Essential technical
+          storage may still be used by browsers, hosting infrastructure, or external
+          services where necessary to provide and secure their services.
         </p>
         <p>
           When you follow a link to Gumroad or another external site, that provider
-          may use its own cookies under its own policy. If Google Analytics is added,
-          we will update the site's consent controls and this policy as needed before
-          non-essential analytics cookies are used where consent is required.
+          may use its own cookies under its own policy. You can withdraw or change
+          your analytics choice at any time using Cookie settings in the footer.
         </p>
+        <button class="button button--secondary" type="button" data-analytics-settings>
+          Change analytics preference
+        </button>
       </section>
 
       <section id="use-and-sharing">
@@ -166,12 +168,12 @@ const lastUpdated = 'August 20, 2026';
           <li>reply to emails and provide product, license, or customer support;</li>
           <li>fulfil and support purchases made through Gumroad;</li>
           <li>meet contractual, accounting, fraud-prevention, or legal duties; and</li>
-          <li>understand site performance if analytics is enabled in the future.</li>
+          <li>understand site performance when you allow optional analytics.</li>
         </ul>
         <p>
           We do not sell or rent personal information. Information may be handled by
           service providers such as Gumroad, hosting and infrastructure providers,
-          and—only if enabled—Google Analytics. We may also disclose information
+          and—only with your permission—Google Analytics. We may also disclose information
           where required by law or necessary to protect our rights and users.
         </p>
       </section>
