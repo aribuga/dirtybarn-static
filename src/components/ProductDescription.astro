@@ -1,0 +1,12 @@
+---
+import { renderSafeMarkdown } from '../lib/markdown-render.mjs';
+
+interface Props {
+  markdown: string;
+}
+
+const { markdown } = Astro.props;
+const html = await renderSafeMarkdown(markdown);
+---
+
+<div class="markdown-content" set:html={html}></div>

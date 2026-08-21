@@ -1,0 +1,1142 @@
+{
+  "started_at": "2026-07-30T16:13:30.089Z",
+  "completed_at": "2026-07-30T16:13:56.304Z",
+  "duration_ms": 26215,
+  "dry_run": false,
+  "limit": null,
+  "input_source": "migration/raw/products.json",
+  "products_available": 116,
+  "products_checked": 116,
+  "product_files_changed": 109,
+  "descriptions_repaired": 109,
+  "descriptions_unchanged": 7,
+  "empty_descriptions": 0,
+  "products_with_videos": 15,
+  "videos_found_from_api": 4,
+  "videos_found_from_page_scan": 11,
+  "videos_preserved_from_frontmatter": 0,
+  "total_unique_youtube_videos": 15,
+  "page_scans_attempted": 112,
+  "page_scans_failed": 0,
+  "unmatched_products": 0,
+  "changed_products": [
+    {
+      "wordpress_id": 204263,
+      "title": "T-Shirt Label Texture Mockup",
+      "slug": "t-shirt-label-texture-mockup",
+      "file": "content/products/t-shirt-label-texture-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 204292,
+      "title": "Dirtybarn Graphics Set (Free)",
+      "slug": "dirtybarn-graphics-set-free",
+      "file": "content/products/dirtybarn-graphics-set-free.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 204456,
+      "title": "Story & Post Template for Instagram (free)",
+      "slug": "template-for-instagram-story-post",
+      "file": "content/products/template-for-instagram-story-post.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 205222,
+      "title": "Animated T-Shirt Mockup",
+      "slug": "animated-t-shirt-mockup",
+      "file": "content/products/animated-t-shirt-mockup.md",
+      "description_changed": true,
+      "videos_changed": true,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "DdXteiMOIt0"
+      ]
+    },
+    {
+      "wordpress_id": 207434,
+      "title": "10 High-Resolution Plastic Wrap Textures (Free)",
+      "slug": "plastic-wrap-texture",
+      "file": "content/products/plastic-wrap-texture.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 208161,
+      "title": "3 fonts: Splinter, Dogshit, Iskele",
+      "slug": "font-bundle-splinter-dogshit-iskele",
+      "file": "content/products/font-bundle-splinter-dogshit-iskele.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 208664,
+      "title": "Retro Casio Watch Mockup",
+      "slug": "retro-casio-watch-mockup",
+      "file": "content/products/retro-casio-watch-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 208937,
+      "title": "Barbed Wire Branding Identity Mockup Bundle",
+      "slug": "barbed-wire-branding-identity-mockup-bundle",
+      "file": "content/products/barbed-wire-branding-identity-mockup-bundle.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 208957,
+      "title": "Design Elements Pack: 100 Shapes",
+      "slug": "design-elements-pack-100-shapes",
+      "file": "content/products/design-elements-pack-100-shapes.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 209143,
+      "title": "LED Screen Template",
+      "slug": "led-screen-template",
+      "file": "content/products/led-screen-template.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 209381,
+      "title": "Fisheye Lens Effect",
+      "slug": "fisheye-lens-effect",
+      "file": "content/products/fisheye-lens-effect.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "FmWLbPZkKuA"
+      ]
+    },
+    {
+      "wordpress_id": 209391,
+      "title": "Damaged Text Template (Free)",
+      "slug": "damaged-text-template",
+      "file": "content/products/damaged-text-template.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 209640,
+      "title": "Bitmap Effect (Free)",
+      "slug": "bitmap-effect",
+      "file": "content/products/bitmap-effect.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 209698,
+      "title": "Burning Paper Texture Mockup",
+      "slug": "burning-paper-mockup-texture",
+      "file": "content/products/burning-paper-mockup-texture.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 209768,
+      "title": "Font: Belkis (Free)",
+      "slug": "belkis-font",
+      "file": "content/products/belkis-font.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 210120,
+      "title": "Lollipop Mockup (Free)",
+      "slug": "lollipop-mockup",
+      "file": "content/products/lollipop-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 210146,
+      "title": "Font: AtilAgg",
+      "slug": "font-atilagg",
+      "file": "content/products/font-atilagg.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 210494,
+      "title": "Paper mockups floating in the desert (Free)",
+      "slug": "paper-desert-mockup",
+      "file": "content/products/paper-desert-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 210598,
+      "title": "Cassette Tape Mockup",
+      "slug": "cassette-tape-mockup",
+      "file": "content/products/cassette-tape-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 211021,
+      "title": "Design Elements Pack: Turkish Delight (Free)",
+      "slug": "design-elements-pack-turkish-delights",
+      "file": "content/products/design-elements-pack-turkish-delights.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 211094,
+      "title": "Macintosh UI Elements",
+      "slug": "macintosh-ui-elements",
+      "file": "content/products/macintosh-ui-elements.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 211295,
+      "title": "Graphics set with 35 pieces (Free)",
+      "slug": "graphics-set-with-35-pieces",
+      "file": "content/products/graphics-set-with-35-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 211536,
+      "title": "Street Poster Mockup (Free)",
+      "slug": "street-poster-mockup",
+      "file": "content/products/street-poster-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 212480,
+      "title": "Distressed Ink Bleed Effect",
+      "slug": "distressed-ink-bleed-effect",
+      "file": "content/products/distressed-ink-bleed-effect.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 212635,
+      "title": "12 Chromatic Text Effects",
+      "slug": "12-chromatic-text-effects",
+      "file": "content/products/12-chromatic-text-effects.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 212809,
+      "title": "Playstation 2 Memory Card Mockup (Free)",
+      "slug": "playstation-2-memory-card-mockup",
+      "file": "content/products/playstation-2-memory-card-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 214066,
+      "title": "Holographic Materials Pack 9 Videos + 30 PNGs + 8 Background",
+      "slug": "holographic-materials-pack-9-videos-30-pngs-8-background",
+      "file": "content/products/holographic-materials-pack-9-videos-30-pngs-8-background.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "6OZxtZwGFLE"
+      ]
+    },
+    {
+      "wordpress_id": 214923,
+      "title": "Colorful and Retro Sticker Pack - 20 Pieces",
+      "slug": "colorful-and-retro-sticker-pack-20-pieces",
+      "file": "content/products/colorful-and-retro-sticker-pack-20-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 215045,
+      "title": "Photocopy Effect (Free)",
+      "slug": "photocopy-effect",
+      "file": "content/products/photocopy-effect.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 215168,
+      "title": "Grainy Gradient Pack - 20 Pieces (Free)",
+      "slug": "grainy-gradient-pack-20-pieces",
+      "file": "content/products/grainy-gradient-pack-20-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 215607,
+      "title": "Futuristic Graphics Kit (Free)",
+      "slug": "futuristic-graphics-kit",
+      "file": "content/products/futuristic-graphics-kit.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 215773,
+      "title": "MacBook Pro Mockup",
+      "slug": "macbook-pro-mockup",
+      "file": "content/products/macbook-pro-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 215818,
+      "title": "Design Elements Pack #4: 50 Unique Shapes (Free)",
+      "slug": "50-unique-shapes",
+      "file": "content/products/50-unique-shapes.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 215826,
+      "title": "Modern Minimalistic Social Media Template",
+      "slug": "modern-minimalistic-social-media-template",
+      "file": "content/products/modern-minimalistic-social-media-template.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 215920,
+      "title": "Book Mockup (Free)",
+      "slug": "book-mockup",
+      "file": "content/products/book-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 217321,
+      "title": "Colorful and Retro Sticker Pack - Part II",
+      "slug": "colorful-and-retro-sticker-pack-part-ii",
+      "file": "content/products/colorful-and-retro-sticker-pack-part-ii.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 217526,
+      "title": "Psychedelic & Abstract Texture Set - 54 Pieces",
+      "slug": "psychedelic-abstract-texture-set-54-pieces",
+      "file": "content/products/psychedelic-abstract-texture-set-54-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 218157,
+      "title": "Gradient Minimal Vector Shapes – 50 Pieces",
+      "slug": "gradient-minimal-vector-shapes-50-pieces",
+      "file": "content/products/gradient-minimal-vector-shapes-50-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 218746,
+      "title": "Design Elements Pack #5: 3D Shapes Collection",
+      "slug": "design-elements-pack-5-3d-shapes-collection",
+      "file": "content/products/design-elements-pack-5-3d-shapes-collection.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 219031,
+      "title": "Billboard Mockups",
+      "slug": "billboard-mockups",
+      "file": "content/products/billboard-mockups.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 219091,
+      "title": "Vintage Polaroid Mockup",
+      "slug": "vintage-polaroid-mockup",
+      "file": "content/products/vintage-polaroid-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 219171,
+      "title": "Word Clippings: Retro Stickers and Headlines – 50 Pieces",
+      "slug": "word-clippings-retro-stickers",
+      "file": "content/products/word-clippings-retro-stickers.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 219261,
+      "title": "Design Elements Pack #6: 100 Organic Shapes",
+      "slug": "design-elements-pack-6-100-organic-shapes",
+      "file": "content/products/design-elements-pack-6-100-organic-shapes.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 219354,
+      "title": "12 Brutal Poster Templates",
+      "slug": "12-brutal-poster-templates",
+      "file": "content/products/12-brutal-poster-templates.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 219454,
+      "title": "Album Cover Templates - 10 Pieces",
+      "slug": "album-cover-templates-10-pieces",
+      "file": "content/products/album-cover-templates-10-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 219542,
+      "title": "Handcrafted Plastic Texture Set - 36 Pieces",
+      "slug": "handcrafted-plastic-texture-set-36-pieces",
+      "file": "content/products/handcrafted-plastic-texture-set-36-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 219640,
+      "title": "Music Festival Social Media Visual Kit",
+      "slug": "music-festival-social-media-visual-kit",
+      "file": "content/products/music-festival-social-media-visual-kit.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 219701,
+      "title": "Brutal and Gradient Poster Templates #2",
+      "slug": "brutal-and-gradient-poster-templates-2",
+      "file": "content/products/brutal-and-gradient-poster-templates-2.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 211998,
+      "title": "Design Elements Pack: 500 Shapes",
+      "slug": "design-elements-pack",
+      "file": "content/products/design-elements-pack.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 220038,
+      "title": "Modern & Gradient Business Card Designs - 5 Variations",
+      "slug": "modern-gradient-business-card-designs",
+      "file": "content/products/modern-gradient-business-card-designs.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 220250,
+      "title": "Glass Morphism - 15 Different Styles",
+      "slug": "glass-morphism-15-different-styles",
+      "file": "content/products/glass-morphism-15-different-styles.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 220385,
+      "title": "13\" MacBook Pro Mockups",
+      "slug": "13-macbook-pro-mockups",
+      "file": "content/products/13-macbook-pro-mockups.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "r3OY9vvbv88"
+      ]
+    },
+    {
+      "wordpress_id": 220552,
+      "title": "Kinetic Typographic Animations Pack",
+      "slug": "kinetic-typographic-animations-pack",
+      "file": "content/products/kinetic-typographic-animations-pack.md",
+      "description_changed": true,
+      "videos_changed": true,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "Ydr92OdhlFw"
+      ]
+    },
+    {
+      "wordpress_id": 220614,
+      "title": "Font: Sundai",
+      "slug": "font-sundai",
+      "file": "content/products/font-sundai.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 220867,
+      "title": "Mexican Style Vector Elements - 15 Pieces",
+      "slug": "mexican-style-vector-elements-15-pieces",
+      "file": "content/products/mexican-style-vector-elements-15-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 220893,
+      "title": "Crystal Clear Prism Video Pack - 35 Footage",
+      "slug": "crystal-clear-prism-video-pack-35-footage",
+      "file": "content/products/crystal-clear-prism-video-pack-35-footage.md",
+      "description_changed": true,
+      "videos_changed": true,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "k0rm7cOFl_Y"
+      ]
+    },
+    {
+      "wordpress_id": 221457,
+      "title": "1000+ Shapes & Elements Bundle",
+      "slug": "1000-shapes-elements-bundle",
+      "file": "content/products/1000-shapes-elements-bundle.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 221589,
+      "title": "Retro Title Logo Animation Templates - 15 Pieces",
+      "slug": "retro-title-logo-animation-templates",
+      "file": "content/products/retro-title-logo-animation-templates.md",
+      "description_changed": true,
+      "videos_changed": true,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "-YBg5Je8mYw"
+      ]
+    },
+    {
+      "wordpress_id": 221636,
+      "title": "Wine Bottle Mockup",
+      "slug": "wine-bottle-mockup",
+      "file": "content/products/wine-bottle-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 221672,
+      "title": "16\" M1 MacBook Pro Mockup",
+      "slug": "16-m1-macbook-pro-mockup",
+      "file": "content/products/16-m1-macbook-pro-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 221690,
+      "title": "iPhone 14 Pro Mockup",
+      "slug": "iphone-14-pro-mockup",
+      "file": "content/products/iphone-14-pro-mockup.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 221949,
+      "title": "Apple Products Mockup Bundle - 6 Apple Products",
+      "slug": "apple-products-mockup-bundle-6-apple-products",
+      "file": "content/products/apple-products-mockup-bundle-6-apple-products.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 222019,
+      "title": "Design Elements Pack #7: 3D Vector Shapes Pack",
+      "slug": "design-elements-pack-6-3d-vector-shapes-pack",
+      "file": "content/products/design-elements-pack-6-3d-vector-shapes-pack.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 222050,
+      "title": "Abstract & Brutal Motion Poster Designs - 10 Templates",
+      "slug": "abstract-brutal-motion-poster-designs-10-templates",
+      "file": "content/products/abstract-brutal-motion-poster-designs-10-templates.md",
+      "description_changed": true,
+      "videos_changed": true,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "RFw4pNnT1JQ"
+      ]
+    },
+    {
+      "wordpress_id": 222212,
+      "title": "Blurry Sky & City Stock Images - 600 Pieces",
+      "slug": "blurry-sky-city-stock-images-600-pieces",
+      "file": "content/products/blurry-sky-city-stock-images-600-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 227463,
+      "title": "Word Clippings: Retro Stickers and Headlines II – 30 Pieces",
+      "slug": "word-clippings-retro-stickers-and-headlines-ii-30-pieces",
+      "file": "content/products/word-clippings-retro-stickers-and-headlines-ii-30-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 227696,
+      "title": "Design Elements Pack #8: Y2K Shapes - 100 Pieces",
+      "slug": "design-elements-pack-8-y2k-shapes-100-pieces",
+      "file": "content/products/design-elements-pack-8-y2k-shapes-100-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 227836,
+      "title": "3D Elements Pack #1: Colorful and Super Cute Objects",
+      "slug": "3d-elements-pack-1-colorful-and-super-cute-objects",
+      "file": "content/products/3d-elements-pack-1-colorful-and-super-cute-objects.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 228447,
+      "title": "Comprehensive Text Effects Pack",
+      "slug": "comprehensive-text-effects-pack",
+      "file": "content/products/comprehensive-text-effects-pack.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 228766,
+      "title": "Heatwave Gradient - Thermal Effects Pack",
+      "slug": "heatwave-gradient-thermal-effects-pack",
+      "file": "content/products/heatwave-gradient-thermal-effects-pack.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 228928,
+      "title": "Dreamscape Backgrounds Pack",
+      "slug": "dreamscape-backgrounds-pack",
+      "file": "content/products/dreamscape-backgrounds-pack.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 229065,
+      "title": "Wobbly | Bubbly Letters with 3D Style and 20 Variations",
+      "slug": "wobbly-bubbly-letters-with-3d-style-and-20-variations",
+      "file": "content/products/wobbly-bubbly-letters-with-3d-style-and-20-variations.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 229721,
+      "title": "3D Chromatic Shapes Pack",
+      "slug": "3d-chromatic-shapes-pack",
+      "file": "content/products/3d-chromatic-shapes-pack.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 230004,
+      "title": "Colorful and Retro Sticker Pack III – 20 Pieces",
+      "slug": "colorful-and-retro-sticker-pack-iii-20-pieces",
+      "file": "content/products/colorful-and-retro-sticker-pack-iii-20-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 230265,
+      "title": "Y2K Templates - 20 Pieces",
+      "slug": "y2k-templates",
+      "file": "content/products/y2k-templates.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 231143,
+      "title": "Retro Futuristic Space & Mushroom Clouds Background Pack",
+      "slug": "retro-futuristic-space-mushroom-clouds-background-pack",
+      "file": "content/products/retro-futuristic-space-mushroom-clouds-background-pack.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 231498,
+      "title": "Wavy | 3D and Illustrative Background Pack - 1200+ Pieces",
+      "slug": "wavy-background-pack-3d-and-illustrative",
+      "file": "content/products/wavy-background-pack-3d-and-illustrative.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 231738,
+      "title": "Boomba Music Festival | Colorful Gradient Social Media Templates",
+      "slug": "colorful-gradient-social-media-templates",
+      "file": "content/products/colorful-gradient-social-media-templates.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 231847,
+      "title": "Microscopic Universe Abstract Shapes Pack",
+      "slug": "microscopic-universeve-abstracts-shapes-pack",
+      "file": "content/products/microscopic-universeve-abstracts-shapes-pack.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 231999,
+      "title": "Billboard Video Mockup with the Crowd",
+      "slug": "billboard-video-mockup-with-the-crowd",
+      "file": "content/products/billboard-video-mockup-with-the-crowd.md",
+      "description_changed": true,
+      "videos_changed": true,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "i2gePPBtSq8"
+      ]
+    },
+    {
+      "wordpress_id": 232138,
+      "title": "Pizza Box 3D Mockup - 6 Scenes and Places",
+      "slug": "pizza-box-mockups",
+      "file": "content/products/pizza-box-mockups.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 232166,
+      "title": "Grotesk Transitions - 115 Unique Pieces",
+      "slug": "grotesk-transitions-115-unique-pieces",
+      "file": "content/products/grotesk-transitions-115-unique-pieces.md",
+      "description_changed": true,
+      "videos_changed": true,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "hjFDL_Sz9zQ"
+      ]
+    },
+    {
+      "wordpress_id": 232336,
+      "title": "Quirky and Brutal Sticker Pack - 25 Animated Stickers",
+      "slug": "quirky-and-brutal-sticker-pack-25-animated-stickers",
+      "file": "content/products/quirky-and-brutal-sticker-pack-25-animated-stickers.md",
+      "description_changed": true,
+      "videos_changed": true,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "IPiIBEr46oo"
+      ]
+    },
+    {
+      "wordpress_id": 232382,
+      "title": "Wild West Sticker Pack - 20 Pieces",
+      "slug": "wild-west-sticker-pack-20-pieces",
+      "file": "content/products/wild-west-sticker-pack-20-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 232608,
+      "title": "Distorted Waves - 20 Vector Patterns (Free)",
+      "slug": "distorted-waves-20-vector-patterns",
+      "file": "content/products/distorted-waves-20-vector-patterns.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 232629,
+      "title": "Colorful and Metallic Animated Gradients - 20 Videos",
+      "slug": "colorful-and-metallic-animated-gradients-20-videos",
+      "file": "content/products/colorful-and-metallic-animated-gradients-20-videos.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 232683,
+      "title": "Wobbly 2 | Bubbly Letters with 3D Style and 20 Variations",
+      "slug": "wobbly-2-bubbly-letters-3d-style",
+      "file": "content/products/wobbly-2-bubbly-letters-3d-style.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 232834,
+      "title": "Nintendo N64 & NES Cartridge Mockup Duo",
+      "slug": "nintendo-n64-nes-cartridge-mockup-duo",
+      "file": "content/products/nintendo-n64-nes-cartridge-mockup-duo.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 232846,
+      "title": "Business Card Mockups in Zero Gravity",
+      "slug": "business-card-mockups-in-zero-gravity",
+      "file": "content/products/business-card-mockups-in-zero-gravity.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 233106,
+      "title": "2025 Dirtykit Entire Library for Designers - 93% OFF",
+      "slug": "dirtykit",
+      "file": "content/products/dirtykit.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 233290,
+      "title": "Magazine Mockup on a Brick - 5 Scenes",
+      "slug": "magazine-mockup-on-a-brick-5-scenes",
+      "file": "content/products/magazine-mockup-on-a-brick-5-scenes.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 233357,
+      "title": "Modern and Neat Poster Templates",
+      "slug": "modern-and-neat-poster-templates",
+      "file": "content/products/modern-and-neat-poster-templates.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 233571,
+      "title": "Cyber Coral - Abstract 3D Shapes Pack - 144 Pieces",
+      "slug": "cyber-coral-abstract-3d",
+      "file": "content/products/cyber-coral-abstract-3d.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 233584,
+      "title": "Bento Grid Social Media Templates - 6 Layouts",
+      "slug": "bento-grid-social-media-templates-6-layouts",
+      "file": "content/products/bento-grid-social-media-templates-6-layouts.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 233703,
+      "title": "3D Floral Shapes - 95 Shapes with 15 Material",
+      "slug": "3d-floral-shapes-95-shapes-with-15-material",
+      "file": "content/products/3d-floral-shapes-95-shapes-with-15-material.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 233682,
+      "title": "Animated Poster Templates - 6 Designs",
+      "slug": "animated-poster-templates-6-designs",
+      "file": "content/products/animated-poster-templates-6-designs.md",
+      "description_changed": true,
+      "videos_changed": true,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "-GGApZauUl8"
+      ]
+    },
+    {
+      "wordpress_id": 233915,
+      "title": "3D Tablet Pill Mockup - 10 Animated Templates",
+      "slug": "3d-tablet-pill-mockup-10-templates",
+      "file": "content/products/3d-tablet-pill-mockup-10-templates.md",
+      "description_changed": true,
+      "videos_changed": true,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "GWuRqYIoC6A"
+      ]
+    },
+    {
+      "wordpress_id": 234095,
+      "title": "The Longest Night - Notion Style Icon Pack",
+      "slug": "the-longest-night-notion-style-icon-pack",
+      "file": "content/products/the-longest-night-notion-style-icon-pack.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 234320,
+      "title": "Flash Sale Sticker Pack - 20 Pieces",
+      "slug": "flash-sale-sticker-pack-20-pieces",
+      "file": "content/products/flash-sale-sticker-pack-20-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 234324,
+      "title": "Dirtybarn Action Pack Collection - 17 Effects",
+      "slug": "dirtybarn-action-pack-collection-17-effects",
+      "file": "content/products/dirtybarn-action-pack-collection-17-effects.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 234642,
+      "title": "Animals and Celebrations - Illustrative Poster Templates",
+      "slug": "animals-and-celebrations-poster-templates",
+      "file": "content/products/animals-and-celebrations-poster-templates.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 234672,
+      "title": "Fashionista Sticker Pack - 20 Pieces",
+      "slug": "fashionista-sticker-pack-20-pieces",
+      "file": "content/products/fashionista-sticker-pack-20-pieces.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 234755,
+      "title": "Clownify - 3D Shapes and Figure Pack",
+      "slug": "clownify-3d-shapes-and-figure-pack",
+      "file": "content/products/clownify-3d-shapes-and-figure-pack.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 234881,
+      "title": "Feel Good - 20 Positive Quote Poster Templates",
+      "slug": "feel-good-20-positive-quote-poster-templates",
+      "file": "content/products/feel-good-20-positive-quote-poster-templates.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 235997,
+      "title": "Chroma - 3D Looped Transparent Letters and Symbols",
+      "slug": "chroma-3d-looped-transparent-letters-and-symbols",
+      "file": "content/products/chroma-3d-looped-transparent-letters-and-symbols.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": [
+        "IH1lCV6EOlM"
+      ]
+    },
+    {
+      "wordpress_id": 237214,
+      "title": "3D Lighter Mockup - 5 Scenes",
+      "slug": "3d-lighter-mockup-5-scenes",
+      "file": "content/products/3d-lighter-mockup-5-scenes.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 238176,
+      "title": "Brutal Social Media Set - 10 Templates",
+      "slug": "brutal-social-media-set-10-templates",
+      "file": "content/products/brutal-social-media-set-10-templates.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 238650,
+      "title": "Wonky Social Media Pack - 44 Doodles, 22 Layouts",
+      "slug": "wonky-social-media-pack-44-doodles-22-layouts",
+      "file": "content/products/wonky-social-media-pack-44-doodles-22-layouts.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    },
+    {
+      "wordpress_id": 250365,
+      "title": "Vienna Local Recommendations Map",
+      "slug": "vienna-local-recommendations-map",
+      "file": "content/products/vienna-local-recommendations-map.md",
+      "description_changed": true,
+      "videos_changed": false,
+      "description_source": "woocommerce_short_description",
+      "video_ids": []
+    }
+  ]
+}

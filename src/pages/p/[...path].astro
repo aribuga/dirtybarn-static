@@ -1,0 +1,37 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import ProductDescription from '../../components/ProductDescription.astro';
+import ProductLayout from '../../layouts/ProductLayout.astro';
+import { getPublishedProducts, metaDescription, productDescription, relatedProducts } from '../../lib/products';
+import { productRoute } from '../../lib/urls.mjs';
+
+export async function getStaticPaths() {
+  const products = await getPublishedProducts();
+  return products.map((product) => ({
+    params: { path: productRoute(product).path },
+    props: { product, related: relatedProducts(product, products) },
+  }));
+}
+
+interface Props {
+  product: CollectionEntry<'products'>;
+  related: CollectionEntry<'products'>[];
+}
+
+const { product, related } = Astro.props;
+const description = productDescription(product);
+const seoDescription = metaDescription(description) || product.data.title;
+const { Content } = await render(product);
+const hasExcerpt = Boolean(product.data.excerpt.trim());
+const hasBody = Boolean(product.body?.trim());
+---
+
+<ProductLayout product={product} description={seoDescription} relatedProducts={related}>
+  {hasExcerpt ? (
+    <ProductDescription markdown={product.data.excerpt} />
+  ) : hasBody ? (
+    <div class="markdown-content"><Content /></div>
+  ) : (
+    <p class="muted-text">No description is available yet.</p>
+  )}
+</ProductLayout>

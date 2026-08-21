@@ -1,0 +1,35 @@
+{
+  "name": "woocommerce-pagescms-migration",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "WooCommerce product migration and Astro static product site",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run validate:posts && astro build",
+    "preview": "astro preview",
+    "import:products": "node scripts/import-woocommerce-products.mjs",
+    "import:posts": "node scripts/import-wordpress-posts.mjs",
+    "validate:posts": "node scripts/validate-blog-routes.mjs",
+    "check": "node scripts/check-project.mjs && node scripts/check-site-data.mjs && npm run validate:posts && node --test && astro check"
+  },
+  "dependencies": {
+    "astro": "5.18.2",
+    "cheerio": "1.0.0",
+    "dotenv": "^17.2.1",
+    "js-yaml": "^4.1.0",
+    "sanitize-html": "2.14.0",
+    "turndown": "^7.2.1",
+    "turndown-plugin-gfm": "^1.0.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.9",
+    "typescript": "5.9.2"
+  },
+  "overrides": {
+    "unstorage": "1.17.3"
+  }
+}

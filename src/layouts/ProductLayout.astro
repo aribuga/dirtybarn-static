@@ -1,0 +1,92 @@
+---
+import type { ProductEntry } from '../lib/products';
+import { categoryFilterKey } from '../lib/products';
+import { formatProductPrice } from '../lib/formatPrice';
+import { formatDate } from '../lib/formatDate';
+import GumroadButton from '../components/GumroadButton.astro';
+import ProductGallery from '../components/ProductGallery.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import ProductPrice from '../components/ProductPrice.astro';
+import ProductVideos from '../components/ProductVideos.astro';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  product: ProductEntry;
+  description: string;
+  relatedProducts?: ProductEntry[];
+}
+
+const { product, description, relatedProducts = [] } = Astro.props;
+const data = product.data;
+const price = formatProductPrice(data.price, data.regular_price, data.currency);
+const updated = formatDate(data.updated_at);
+const primaryCategory = data.categories[0] || '';
+let hasGumroadUrl = false;
+try {
+  hasGumroadUrl = ['http:', 'https:'].includes(new URL(data.gumroad_url).protocol);
+} catch {
+  // Empty and invalid Gumroad values intentionally render the unavailable state.
+}
+---
+
+<BaseLayout
+  title={data.title}
+  description={description}
+  canonicalPath={data.permalink}
+  image={data.cover}
+  section="assets"
+>
+  <nav class="store-shell product-breadcrumb" aria-label="Breadcrumb">
+    <a href="/#catalog">Assets</a>
+    {primaryCategory && (
+      <><span aria-hidden="true">/</span><a href={`/?filter=${categoryFilterKey(primaryCategory)}#catalog`}>{primaryCategory}</a></>
+    )}
+    <span aria-hidden="true">/</span><span aria-current="page">{data.title}</span>
+  </nav>
+
+  <section class="store-shell product-layout">
+    <article class="product-info">
+      <p class="store-kicker">{data.categories.slice(0, 2).join(' · ') || 'Digital asset'}</p>
+      <h1>{data.title}</h1>
+      <ProductPrice price={data.price} regularPrice={data.regular_price} currency={data.currency} />
+
+      <div class="product-info__actions">
+        <GumroadButton url={data.gumroad_url} price={Number(data.price) === 0 ? 'Free' : price.active} />
+        <ProductVideos videos={data.videos} />
+      </div>
+      {hasGumroadUrl && (
+        <p class="product-info__note">Instant download. Final price and VAT are shown on Gumroad.</p>
+      )}
+
+      <section class="product-description" aria-labelledby="product-description-heading">
+        <h2 id="product-description-heading">Description</h2>
+        <slot />
+      </section>
+
+      <dl class="product-facts">
+        {updated && <div><dt>Updated</dt><dd><time datetime={data.updated_at}>{updated}</time></dd></div>}
+        <div><dt>License</dt><dd><a href="/license/">Standard License information</a></dd></div>
+        <div><dt>Support</dt><dd><a href="/contact/">Contact Dirtybarn</a></dd></div>
+      </dl>
+
+      {(data.categories.length > 0 || data.tags.length > 0) && (
+        <div class="product-meta-links" aria-label="Product categories and tags">
+          {data.categories.map((category) => <a href={`/?filter=${categoryFilterKey(category)}#catalog`}>{category}</a>)}
+          {data.tags.map((tag) => <span>{tag}</span>)}
+        </div>
+      )}
+    </article>
+
+    <ProductGallery title={data.title} cover={data.cover} gallery={data.gallery} />
+  </section>
+
+  {relatedProducts.length > 0 && (
+    <section class="store-shell store-related" aria-labelledby="related-assets-title">
+      <div class="store-section-head">
+        <div><p class="store-kicker">Related assets</p><h2 id="related-assets-title">More from the barn</h2></div>
+        <a href="/#catalog">View all ↗</a>
+      </div>
+      <ProductGrid products={relatedProducts} related />
+    </section>
+  )}
+</BaseLayout>

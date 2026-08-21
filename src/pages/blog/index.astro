@@ -1,0 +1,43 @@
+---
+import PostGrid from '../../components/PostGrid.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../lib/formatDate';
+import { getPublishedPosts, postExcerpt } from '../../lib/posts';
+
+const posts = await getPublishedPosts();
+const featured = posts[0];
+const remaining = posts.slice(1);
+const description = 'Stories, interviews, inspiration, and creative resources from Dirtybarn.';
+---
+
+<BaseLayout title="Journal" description={description} canonicalPath="/blog/" section="journal">
+  <section class="store-shell journal-hero">
+    <p class="store-kicker">Journal</p>
+    <h1>Notes on making, organising and using visual tools.</h1>
+    <div>
+      <p>No trend reports. Mostly workflows, production decisions and the occasional useful mistake.</p>
+      <span>{posts.length} articles · newest first</span>
+    </div>
+  </section>
+
+  <section class="store-shell journal-index">
+    {featured && (
+      <article class="journal-feature">
+        <a class="journal-feature__media" href={featured.data.permalink}>
+          {featured.data.cover ? (
+            <img src={featured.data.cover} alt={featured.data.title} decoding="async" fetchpriority="high" />
+          ) : (
+            <div class="image-placeholder" role="img" aria-label={`${featured.data.title} image unavailable`}>Image unavailable</div>
+          )}
+        </a>
+        <div>
+          <span>{featured.data.categories[0] || 'Journal'}{formatDate(featured.data.published_at) ? ` · ${formatDate(featured.data.published_at)}` : ''}</span>
+          <h2><a href={featured.data.permalink}>{featured.data.title}</a></h2>
+          {postExcerpt(featured) && <p>{postExcerpt(featured)}</p>}
+          <a href={featured.data.permalink}>Read article ↗</a>
+        </div>
+      </article>
+    )}
+    <PostGrid posts={remaining} />
+  </section>
+</BaseLayout>

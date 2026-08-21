@@ -1,0 +1,34 @@
+---
+import { formatProductPrice } from '../lib/formatPrice';
+
+interface Props {
+  price: string;
+  regularPrice?: string;
+  currency?: string;
+  compact?: boolean;
+}
+
+const { price, regularPrice = '', currency = '', compact = false } = Astro.props;
+const display = formatProductPrice(price, regularPrice, currency);
+const isFree = Number(price) === 0;
+---
+
+<div class:list={['product-price', { 'product-price--compact': compact }]}>
+  {display.active ? (
+    <>
+      <span class="product-price__active">
+        <span class="visually-hidden">Current Standard License price: </span>
+        {isFree ? 'Free' : display.active}
+      </span>
+      {display.hasDiscount && display.regular && (
+        <span class="product-price__regular">
+          <span class="visually-hidden">Regular price: </span>
+          <s>{display.regular}</s>
+        </span>
+      )}
+      {!compact && <span class="product-price__label">Standard License</span>}
+    </>
+  ) : (
+    <span class="product-price__unavailable">Price unavailable</span>
+  )}
+</div>

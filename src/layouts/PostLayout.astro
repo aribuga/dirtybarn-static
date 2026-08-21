@@ -1,0 +1,85 @@
+---
+import type { PostEntry } from '../lib/posts';
+import { formatDate } from '../lib/formatDate';
+import BaseLayout from './BaseLayout.astro';
+
+interface TocItem {
+  id: string;
+  text: string;
+  level: number;
+}
+
+interface Props {
+  post: PostEntry;
+  description: string;
+  permalink: string;
+  readingMinutes: number;
+  toc?: TocItem[];
+  nextPost?: PostEntry | null;
+}
+
+const { post, description, permalink, readingMinutes, toc = [], nextPost = null } = Astro.props;
+const data = post.data;
+const publishedDate = formatDate(data.published_at);
+const authorName = data.author?.name?.trim() || '';
+const category = data.categories[0] || 'Journal';
+---
+
+<BaseLayout
+  title={data.title}
+  description={description}
+  canonicalPath={permalink}
+  image={data.cover}
+  openGraphType="article"
+  publishedTime={data.published_at || undefined}
+  modifiedTime={data.updated_at || undefined}
+  section="journal"
+>
+  <article class="store-shell article">
+    <header class="article-head">
+      <p class="store-kicker">
+        {category}{publishedDate ? ` · ${publishedDate}` : ''} · {readingMinutes} min read
+      </p>
+      <h1>{data.title}</h1>
+      <div class="article-head__summary">
+        <p>{data.excerpt || description}</p>
+        {authorName && <span>By {authorName}</span>}
+      </div>
+    </header>
+
+    {data.cover && (
+      <figure class="article-hero">
+        <img src={data.cover} alt={data.title} decoding="async" fetchpriority="high" />
+      </figure>
+    )}
+
+    <div class="article-layout">
+      {toc.length > 0 && (
+        <aside class="article-toc" aria-label="Table of contents">
+          <span>In this article</span>
+          {toc.map((item) => (
+            <a class:list={{ 'article-toc__nested': item.level === 3 }} href={`#${item.id}`}>{item.text}</a>
+          ))}
+        </aside>
+      )}
+      <div class="article-body">
+        <slot />
+        {(data.categories.length > 0 || data.tags.length > 0) && (
+          <footer class="post-taxonomy">
+            {data.categories.length > 0 && <p><strong>Categories</strong> {data.categories.join(', ')}</p>}
+            {data.tags.length > 0 && <p><strong>Tags</strong> {data.tags.join(', ')}</p>}
+          </footer>
+        )}
+        <a class="back-link" href="/blog/">← Back to Journal</a>
+      </div>
+      <div class="article-layout__space" aria-hidden="true"></div>
+    </div>
+  </article>
+
+  {nextPost && (
+    <section class="store-shell article-next">
+      <span>Next article</span>
+      <a href={nextPost.data.permalink}>{nextPost.data.title} <b aria-hidden="true">↗</b></a>
+    </section>
+  )}
+</BaseLayout>

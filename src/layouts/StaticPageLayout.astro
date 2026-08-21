@@ -1,0 +1,23 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+}
+
+const { title, description, canonicalPath } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} canonicalPath={canonicalPath} section={title === 'About' ? 'about' : undefined}>
+  <article class="store-shell static-page">
+    <header class="static-hero">
+      <p class="store-kicker">Information</p>
+      <h1>{title}</h1>
+    </header>
+    <div class="static-body">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,211 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import DirtykitGlow from '../components/DirtykitGlow.astro';
+import { getPublishedProducts } from '../lib/products';
+
+const gumroadUrl = 'https://dirtybarn.gumroad.com/l/dirtykit';
+const selectedSlugs = [
+  '3d-floral-shapes-95-shapes-with-15-material',
+  'animated-album-mockups-18-type',
+  'brutal-social-media-set-10-templates',
+  'crystal-clear-prism-video-pack-35-footage',
+  'grotesk-transitions-115-unique-pieces',
+  'handcrafted-plastic-texture-set-36-pieces',
+  'holographic-materials-pack-9-videos-30-pngs-8-background',
+  'wobbly-2-bubbly-letters-3d-style',
+];
+const products = await getPublishedProducts();
+const selectedProducts = selectedSlugs
+  .map((slug) => products.find((product) => product.data.slug === slug))
+  .filter((product) => product !== undefined);
+
+const bundleStats = [
+  ['90+', 'handpicked assets'],
+  ['100+', 'mockups'],
+  ['200+', 'motion assets'],
+  ['2,000+', 'textures'],
+  ['1,000+', 'design elements'],
+  ['100+', '3D objects'],
+];
+---
+
+<BaseLayout
+  title="Dirtykit — Entire Library for Designers"
+  description="Dirtykit brings together 90+ handpicked Dirtybarn mockups, templates, effects, textures, motion assets and 3D objects in one designer library."
+  canonicalPath="/dirtykit/"
+  image="/media/products/dirtykit/image-01.jpg"
+>
+  <section class="store-shell dirtykit-hero">
+    <div class="dirtykit-hero__copy">
+      <p class="store-kicker">Dirtybarn entire library</p>
+      <h1>Dirtykit</h1>
+      <p class="dirtykit-hero__lead">
+        More than 90 handpicked assets made to expand the working libraries of
+        designers, artists and image-makers.
+      </p>
+      <div class="dirtykit-hero__actions">
+        <a
+          class="button button--primary"
+          href={gumroadUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >Get Dirtykit on Gumroad ↗</a>
+        <a href="#inside">Explore the library ↓</a>
+      </div>
+      <p class="dirtykit-hero__note">One purchase · Standard License · Delivered by Gumroad</p>
+    </div>
+
+    <DirtykitGlow class="dirtykit-hero__media" />
+  </section>
+
+  <section class="store-shell dirtykit-story" aria-labelledby="dirtykit-story-title">
+    <p class="store-kicker">Built since 2019</p>
+    <div>
+      <h2 id="dirtykit-story-title">Nearly the whole barn, packed into one library.</h2>
+      <div class="dirtykit-story__copy">
+        <p>
+          Dirtybarn began making mockups and digital assets in 2019. Dirtykit brings
+          together nearly every asset created across that journey into a single set.
+        </p>
+        <p>
+          The collection moves across graphics, motion, mockups, textures, effects,
+          templates and 3D objects—different tools for different stages of a visual idea.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="store-shell dirtykit-stats" aria-label="Dirtykit library overview">
+    {bundleStats.map(([value, label]) => (
+      <article>
+        <strong>{value}</strong>
+        <span>{label}</span>
+      </article>
+    ))}
+  </section>
+
+  <section class="store-shell dirtykit-benefits" aria-labelledby="dirtykit-benefits-title">
+    <header>
+      <p class="store-kicker">The bundle</p>
+      <h2 id="dirtykit-benefits-title">A broad visual toolkit without the scavenger hunt.</h2>
+    </header>
+    <div class="dirtykit-benefits__grid">
+      <article>
+        <span>01</span>
+        <h3>Handpicked library</h3>
+        <p>More than 90 Dirtybarn releases collected into one practical creative resource.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Mixed disciplines</h3>
+        <p>Mockups, graphic templates, motion, textures, effects, fonts and 3D assets in one set.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Made for making</h3>
+        <p>Use the library to build, present and extend ideas across brand and visual projects.</p>
+      </article>
+      <article>
+        <span>04</span>
+        <h3>Standard License</h3>
+        <p>Every item in the bundle includes Dirtybarn’s current Standard License.</p>
+        <a href="/license/">Read the license ↗</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="dirtykit-dark">
+    <div class="store-shell dirtykit-dark__inner">
+      <div class="dirtykit-dark__media">
+        <img
+          src="/media/products/dirtykit/image-01.jpg"
+          alt="Overview of the Dirtykit asset library"
+          width="1600"
+          height="2000"
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+      <blockquote>
+        <p>“Amazing pack. This will make my graphic design process very efficient.”</p>
+        <footer>Judah Fashe · Mogul Forever</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="store-shell dirtykit-contents" id="inside" aria-labelledby="dirtykit-contents-title">
+    <header class="store-section-head">
+      <div>
+        <p class="store-kicker">Inside Dirtykit</p>
+        <h2 id="dirtykit-contents-title">A few highlights from the library</h2>
+      </div>
+      <span>90+ assets in the complete bundle</span>
+    </header>
+
+    <ul>
+      {selectedProducts.map((product) => (
+        <li>
+          <a href={product.data.permalink}>
+            <div>
+              <img
+                src={product.data.cover}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h3>{product.data.title}</h3>
+            <span>View asset ↗</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="store-shell dirtykit-faq" aria-labelledby="dirtykit-faq-title">
+    <header>
+      <p class="store-kicker">Questions</p>
+      <h2 id="dirtykit-faq-title">Before you get dirty.</h2>
+    </header>
+    <div>
+      <details open>
+        <summary>What license does Dirtykit include?</summary>
+        <p>
+          Every item comes with the Standard License. Uses outside that scope require
+          contacting Dirtybarn for a broader license. <a href="/license/">Review the license ↗</a>
+        </p>
+      </details>
+      <details>
+        <summary>Where do I download the assets?</summary>
+        <p>
+          Purchase and file delivery are handled by Gumroad. Use your Gumroad receipt or
+          library to access the files after checkout.
+        </p>
+      </details>
+      <details>
+        <summary>Can I buy the included assets separately?</summary>
+        <p>
+          Many assets also have individual product pages in the Dirtybarn library.
+          Dirtykit collects the wider selection in one purchase.
+        </p>
+      </details>
+      <details>
+        <summary>What if I need help?</summary>
+        <p>Email <a href="mailto:hi@dirtybarn.com">hi@dirtybarn.com</a> with your purchase email and question.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="store-shell dirtykit-cta">
+    <p class="store-kicker">Ready when you are</p>
+    <h2>Put the entire Dirtybarn library to work.</h2>
+    <a
+      class="button button--primary"
+      href={gumroadUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+    >View Dirtykit on Gumroad ↗</a>
+    <p>Current price and checkout details are shown on Gumroad.</p>
+  </section>
+
+</BaseLayout>

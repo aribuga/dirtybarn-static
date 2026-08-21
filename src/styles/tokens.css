@@ -1,0 +1,23 @@
+:root {
+  --ink: #0b0b0b;
+  --muted: #5f5f5c;
+  --text-card-copy: #474745;
+  --canvas: #e4e4e1;
+  --paper: #f7f7f5;
+  --media-fallback: #d9d9d4;
+  --surface-raised: #ececea;
+  --line: rgba(10, 10, 10, 0.12);
+  --line-section: rgba(10, 10, 10, 0.08);
+  --overlay: rgba(11, 11, 11, 0.42);
+  --code-background: #101010;
+  --code-text: #efefeb;
+  --radius-small: 11px;
+  --radius-medium: 18px;
+  --radius-large: 32px;
+  --radius-pill: 999px;
+  --store-width: 1320px;
+  --gutter: clamp(12px, 1.6vw, 28px);
+  --text-2xs: 0.62rem;
+  --tracking-label: 0.12em;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+}

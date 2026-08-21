@@ -1,0 +1,76 @@
+[
+  {
+    "wordpress_id": 227836,
+    "product_name": "3D Elements Pack #1: Colorful and Super Cute Objects",
+    "slug": "3d-elements-pack-1-colorful-and-super-cute-objects",
+    "available_variations": [
+      {
+        "variation_id": 227854,
+        "status": "publish",
+        "purchasable": true,
+        "attributes": [
+          {
+            "name": "Package",
+            "option": "Exclusive Commercial (Full Pack)"
+          }
+        ],
+        "price": "12000"
+      },
+      {
+        "variation_id": 227853,
+        "status": "publish",
+        "purchasable": true,
+        "attributes": [
+          {
+            "name": "Package",
+            "option": "Extended Commercial (Full Pack)"
+          }
+        ],
+        "price": "250"
+      },
+      {
+        "variation_id": 227852,
+        "status": "publish",
+        "purchasable": true,
+        "attributes": [
+          {
+            "name": "Package",
+            "option": "Standard (Full Pack)"
+          }
+        ],
+        "price": "90"
+      },
+      {
+        "variation_id": 227851,
+        "status": "publish",
+        "purchasable": true,
+        "attributes": [
+          {
+            "name": "Package",
+            "option": "Only PNGs (Standard)"
+          }
+        ],
+        "price": "12"
+      }
+    ]
+  },
+  {
+    "wordpress_id": 233106,
+    "product_name": "2025 Dirtykit Entire Library for Designers - 93% OFF",
+    "slug": "dirtykit",
+    "available_variations": [
+      {
+        "variation_id": 233109,
+        "status": "publish",
+        "purchasable": true,
+        "attributes": [
+          {
+            "name": "Bundles",
+            "option": "Dirtykit Ultra"
+          }
+        ],
+        "price": "49"
+      }
+    ]
+  }
+]

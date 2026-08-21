@@ -1,0 +1,26 @@
+---
+import DirtykitGlow from './DirtykitGlow.astro';
+
+const gumroadUrl = 'https://dirtybarn.gumroad.com/l/dirtykit';
+---
+
+<section class="store-shell store-featured store-featured--dirtykit" aria-labelledby="featured-title">
+  <DirtykitGlow class="store-featured__media store-featured__glow" />
+
+  <div class="store-featured__copy">
+    <p class="store-kicker">Dirtybarn entire library</p>
+    <h2 id="featured-title"><a href="/dirtykit/">Dirtykit</a></h2>
+    <p class="store-featured__description">
+      More than 90 handpicked mockups, templates, effects, textures, motion assets,
+      and 3D objects in one designer library.
+    </p>
+    <div class="store-featured__meta">
+      <span>90+ handpicked assets</span>
+      <span>Standard License</span>
+    </div>
+    <div class="store-featured__actions">
+      <a class="button button--primary" href="/dirtykit/">Explore Dirtykit</a>
+      <a href={gumroadUrl} target="_blank" rel="noopener noreferrer">Get on Gumroad ↗</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,339 @@
+media:
+  - name: product_media
+    label: Product media
+    input: public/media/products
+    output: /media/products
+    categories: [image]
+    rename: safe
+  - name: post_media
+    label: Journal media
+    input: public/media/posts
+    output: /media/posts
+    categories: [image]
+    rename: safe
+
+content:
+  - name: products
+    label: Products
+    type: collection
+    path: content/products
+    format: yaml-frontmatter
+    subfolders: false
+    filename:
+      template: "{slug}.md"
+      field: false
+    operations:
+      create: true
+      rename: false
+      delete: false
+    view:
+      primary: title
+      fields: [title, status, price, published_at]
+      sort: [published_at, title, status]
+      search: [title, slug, categories, tags]
+      default:
+        sort: published_at
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: slug
+        label: Slug
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          message: Use lowercase letters, numbers, and hyphens only.
+        description: Also used as the filename for new products.
+      - name: status
+        label: Status
+        type: select
+        required: true
+        default: draft
+        options:
+          values:
+            - name: draft
+              label: Draft
+            - name: pending
+              label: Pending review
+            - name: private
+              label: Private
+            - name: published
+              label: Published
+      - name: permalink
+        label: Site path
+        type: string
+        required: true
+        pattern:
+          regex: "^/p/.+/$"
+          message: Use a product path such as /p/product-name/.
+      - name: excerpt
+        label: Product description
+        type: rich-text
+        options:
+          format: markdown
+          media: product_media
+          switcher: true
+      - name: cover
+        label: Cover image
+        type: image
+        required: true
+        options:
+          media: product_media
+          categories: [image]
+      - name: gallery
+        label: Gallery
+        type: image
+        options:
+          media: product_media
+          categories: [image]
+          multiple: true
+          unique: true
+      - name: videos
+        label: YouTube videos
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{provider}: {id}"
+        fields:
+          - name: provider
+            label: Provider
+            type: select
+            default: youtube
+            options:
+              values:
+                - name: youtube
+                  label: YouTube
+          - name: id
+            label: Video ID
+            type: string
+            required: true
+          - name: url
+            label: Video URL
+            type: string
+            required: true
+          - name: embed_url
+            label: Privacy-enhanced embed URL
+            type: string
+            required: true
+      - name: categories
+        label: Categories
+        type: string
+        list: true
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: gumroad_url
+        label: Gumroad URL
+        type: string
+        description: Leave empty to show the unavailable state instead of a purchase button.
+      - name: price
+        label: Price
+        type: string
+      - name: regular_price
+        label: Regular price
+        type: string
+      - name: sale_price
+        label: Sale price
+        type: string
+      - name: currency
+        label: Currency
+        type: string
+        default: EUR
+      - name: published_at
+        label: Published at
+        type: date
+        default: ""
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss"
+      - name: updated_at
+        label: Last imported update
+        type: date
+        readonly: true
+        default: ""
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss"
+      - name: menu_order
+        label: Menu order
+        type: number
+        default: 0
+      - name: body
+        label: Additional Markdown body
+        type: rich-text
+        options:
+          format: markdown
+          media: product_media
+          switcher: true
+      - name: wordpress_id
+        label: WordPress ID
+        type: number
+        readonly: true
+      - name: woocommerce_type
+        label: WooCommerce type
+        type: string
+        readonly: true
+      - name: source_url
+        label: Original source URL
+        type: string
+        readonly: true
+      - name: legacy_url
+        label: Legacy path
+        type: string
+        readonly: true
+      - name: pricing_source
+        label: Pricing source
+        type: string
+        readonly: true
+      - name: standard_license_variation_id
+        label: Standard License variation ID
+        type: number
+        readonly: true
+      - name: standard_license_label
+        label: Standard License label
+        type: string
+        readonly: true
+
+  - name: posts
+    label: Journal
+    type: collection
+    path: content/posts
+    format: yaml-frontmatter
+    subfolders: false
+    filename:
+      template: "{slug}.md"
+      field: false
+    operations:
+      create: true
+      rename: false
+      delete: false
+    view:
+      primary: title
+      fields: [title, status, published_at, author.name]
+      sort: [published_at, title, status]
+      search: [title, slug, excerpt, categories, tags, author.name]
+      default:
+        sort: published_at
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: slug
+        label: Slug
+        type: string
+        required: true
+        pattern:
+          regex: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          message: Use lowercase letters, numbers, and hyphens only.
+        description: Also used as the filename for new journal entries.
+      - name: status
+        label: Status
+        type: select
+        required: true
+        default: draft
+        options:
+          values:
+            - name: draft
+              label: Draft
+            - name: pending
+              label: Pending review
+            - name: private
+              label: Private
+            - name: published
+              label: Published
+      - name: permalink
+        label: Site path
+        type: string
+        required: true
+        pattern:
+          regex: "^/(?!p/|blog/).+/$"
+          message: Use the preserved root path, such as /article-name/.
+      - name: excerpt
+        label: Summary
+        type: text
+        required: true
+      - name: cover
+        label: Cover image
+        type: image
+        required: true
+        options:
+          media: post_media
+          categories: [image]
+      - name: author
+        label: Author
+        type: object
+        fields:
+          - name: id
+            label: WordPress author ID
+            type: number
+            readonly: true
+          - name: name
+            label: Display name
+            type: string
+      - name: categories
+        label: Categories
+        type: string
+        list: true
+      - name: tags
+        label: Tags
+        type: string
+        list: true
+      - name: videos
+        label: Videos
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{provider}: {id}"
+        fields:
+          - name: provider
+            label: Provider
+            type: string
+          - name: id
+            label: Video ID
+            type: string
+          - name: url
+            label: Video URL
+            type: string
+      - name: published_at
+        label: Published at
+        type: date
+        default: ""
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss"
+      - name: updated_at
+        label: Last imported update
+        type: date
+        readonly: true
+        default: ""
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss"
+      - name: body
+        label: Article body
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          media: post_media
+          switcher: true
+      - name: wordpress_id
+        label: WordPress ID
+        type: number
+        readonly: true
+      - name: source_url
+        label: Original source URL
+        type: string
+        readonly: true
+      - name: legacy_url
+        label: Legacy path
+        type: string
+        readonly: true

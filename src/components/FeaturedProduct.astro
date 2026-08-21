@@ -1,0 +1,39 @@
+---
+import type { ProductEntry } from '../lib/products';
+import { formatDate } from '../lib/formatDate';
+import ProductPrice from './ProductPrice.astro';
+
+interface Props {
+  product: ProductEntry;
+}
+
+const { product } = Astro.props;
+const data = product.data;
+const date = formatDate(data.published_at);
+---
+
+<section class="store-shell store-featured" aria-labelledby="featured-title">
+  <a class="store-featured__media" href={data.permalink}>
+    {data.cover ? (
+      <img src={data.cover} alt={data.title} decoding="async" fetchpriority="high" />
+    ) : (
+      <div class="image-placeholder" role="img" aria-label={`${data.title} image unavailable`}>
+        Image unavailable
+      </div>
+    )}
+  </a>
+  <div class="store-featured__copy">
+    <p class="store-kicker">Latest release{date ? ` · ${date}` : ''}</p>
+    <h2 id="featured-title"><a href={data.permalink}>{data.title}</a></h2>
+    <div class="store-featured__meta">
+      <span>{data.categories[0] || 'Digital asset'}</span>
+      <ProductPrice
+        price={data.price}
+        regularPrice={data.regular_price}
+        currency={data.currency}
+        compact
+      />
+    </div>
+    <a class="button button--primary" href={data.permalink}>View asset</a>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import SearchDialog from '../components/SearchDialog.astro';
+import { SITE_DESCRIPTION, SITE_NAME } from '../config';
+import { absoluteSiteUrl } from '../lib/urls.mjs';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  image?: string;
+  openGraphType?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
+  section?: 'assets' | 'journal' | 'about';
+}
+
+const {
+  title = SITE_NAME,
+  description = SITE_DESCRIPTION,
+  canonicalPath,
+  image,
+  openGraphType = 'website',
+  publishedTime,
+  modifiedTime,
+  section,
+} = Astro.props;
+const pageTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
+const siteUrl = import.meta.env.PUBLIC_SITE_URL;
+const canonicalUrl = canonicalPath ? absoluteSiteUrl(canonicalPath, siteUrl) : undefined;
+const openGraphImage = image ? absoluteSiteUrl(image, siteUrl) : undefined;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:type" content={openGraphType} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {openGraphImage && <meta property="og:image" content={openGraphImage} />}
+    {openGraphType === 'article' && publishedTime && (
+      <meta property="article:published_time" content={publishedTime} />
+    )}
+    {openGraphType === 'article' && modifiedTime && (
+      <meta property="article:modified_time" content={modifiedTime} />
+    )}
+  </head>
+  <body class="store-page">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Header section={section} />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+    <SearchDialog />
+  </body>
+</html>

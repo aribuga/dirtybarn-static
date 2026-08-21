@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Dirtybarn about design projects, collaborations, digital assets and purchase support."
+  canonicalPath="/contact/"
+>
+  <section class="store-shell contact-hero">
+    <p class="store-kicker">Contact</p>
+    <div class="contact-hero__content">
+      <h1>Let’s make something together.</h1>
+      <div class="contact-hero__intro">
+        <p>
+          For commissions, collaborations, product questions and purchase support,
+          reach Dirtybarn directly by email.
+        </p>
+        <a class="button button--primary" href="mailto:hi@dirtybarn.com">Email Dirtybarn ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="store-shell contact-options" aria-label="Contact options">
+    <article>
+      <p class="store-kicker">01 / New projects</p>
+      <h2>Tell us what you have in mind.</h2>
+      <p>
+        Dirtybarn works across 3D modelling, 3D design, graphic design, illustration,
+        animation and AR effects. Include a short project outline, the deliverables you
+        need and your preferred timing.
+      </p>
+      <a href="mailto:hi@dirtybarn.com?subject=Project%20inquiry">Start a project ↗</a>
+    </article>
+
+    <article>
+      <p class="store-kicker">02 / Product support</p>
+      <h2>Need help with an asset?</h2>
+      <p>
+        Send the product name, the email used for your purchase and a short description
+        of the issue so the request is easier to identify.
+      </p>
+      <a href="mailto:hi@dirtybarn.com?subject=Product%20support">Get product support ↗</a>
+    </article>
+  </section>
+
+  <section class="store-shell contact-direct" aria-labelledby="contact-direct-title">
+    <p class="store-kicker">Direct email</p>
+    <h2 id="contact-direct-title">
+      <a href="mailto:hi@dirtybarn.com">hi@dirtybarn.com ↗</a>
+    </h2>
+  </section>
+</BaseLayout>

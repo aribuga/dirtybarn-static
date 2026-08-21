@@ -1,0 +1,42 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostLayout from '../layouts/PostLayout.astro';
+import { renderSafeMarkdown } from '../lib/markdown-render.mjs';
+import { enhancePostContent } from '../lib/post-content.mjs';
+import { getPublishedPosts, postMetaDescription, postReadingMinutes } from '../lib/posts';
+import { validatePostPermalinks } from '../lib/post-urls.mjs';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  const routes = validatePostPermalinks(posts);
+  return routes.map(({ path, permalink, post }, index) => ({
+    params: { postPath: path },
+    props: { post, permalink, nextPost: routes[index + 1]?.post || null },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  permalink: string;
+  nextPost: CollectionEntry<'posts'> | null;
+}
+
+const { post, permalink, nextPost } = Astro.props;
+const description = postMetaDescription(post);
+const safeContent = post.body?.trim()
+  ? await renderSafeMarkdown(post.body, { preserveFigures: true })
+  : '<p class="muted-text">This post has no content yet.</p>';
+const content = enhancePostContent(safeContent);
+const readingMinutes = postReadingMinutes(post);
+---
+
+<PostLayout
+  post={post}
+  description={description}
+  permalink={permalink}
+  readingMinutes={readingMinutes}
+  toc={content.toc}
+  nextPost={nextPost}
+>
+  <Fragment set:html={content.html} />
+</PostLayout>

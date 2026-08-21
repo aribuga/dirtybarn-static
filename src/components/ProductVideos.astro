@@ -1,0 +1,28 @@
+---
+interface Video {
+  provider: 'youtube';
+  id: string;
+  url: string;
+  embed_url: string;
+}
+
+interface Props {
+  videos?: Video[];
+}
+
+const { videos = [] } = Astro.props;
+const video = videos.find((candidate) => {
+  if (candidate.provider !== 'youtube' || !/^[A-Za-z0-9_-]{11}$/.test(candidate.id)) return false;
+  try {
+    return ['http:', 'https:'].includes(new URL(candidate.url).protocol);
+  } catch {
+    return false;
+  }
+});
+---
+
+{video && (
+  <a class="button button--secondary product-video-link" href={video.url} target="_blank" rel="noopener noreferrer">
+    Watch video
+  </a>
+)}

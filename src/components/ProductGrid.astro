@@ -1,0 +1,17 @@
+---
+import type { ProductEntry } from '../lib/products';
+import ProductCard from './ProductCard.astro';
+
+interface Props {
+  products: ProductEntry[];
+  related?: boolean;
+}
+
+const { products, related = false } = Astro.props;
+---
+
+<ul class:list={['product-grid', { 'product-grid--three': related }]}>
+  {products.map((product, index) => (
+    <ProductCard product={product} eager={index < 4} />
+  ))}
+</ul>

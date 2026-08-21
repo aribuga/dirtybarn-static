@@ -1,0 +1,44 @@
+{
+  "source": "C:/Users/yasin/Downloads/Dirty Gumroad Lists.xlsx",
+  "summary": {
+    "spreadsheet_product_rows": 116,
+    "matched_static_products": 116,
+    "updated_gumroad_urls": 116,
+    "missing_gumroad_urls": 0,
+    "unmatched_spreadsheet_rows": 0,
+    "static_products_missing_from_spreadsheet": 0,
+    "invalid_gumroad_urls": 0,
+    "duplicate_gumroad_targets": 1
+  },
+  "manual_overrides": [
+    {
+      "title": "Vienna Local Recommendations Map",
+      "dirtybarn_url": "https://dirtybarn.com/p/vienna-local-recommendations-map/",
+      "permalink": "/p/vienna-local-recommendations-map/",
+      "gumroad_url": "https://dirtybarn.gumroad.com/l/vienna-local-recommendations-map"
+    },
+    {
+      "title": "Blue Glass Effect Album Artwork Template",
+      "dirtybarn_url": "https://dirtybarn.com/p/blue-glass-album-art-template-free/",
+      "permalink": "/p/blue-glass-album-art-template-free/",
+      "gumroad_url": "https://dirtybarn.gumroad.com/l/blue-glass-album-art-template-free"
+    }
+  ],
+  "missing": [],
+  "warnings": [
+    {
+      "type": "duplicate_gumroad_target",
+      "gumroad_url": "https://dirtybarn.gumroad.com/l/graphics-set-with-35-pieces",
+      "products": [
+        {
+          "title": "Graphics set with 35 pieces (Free)",
+          "permalink": "/p/graphics-set-with-35-pieces/"
+        },
+        {
+          "title": "Dirtybarn Graphics Set",
+          "permalink": "/p/dirtybarn-graphics-set-free/"
+        }
+      ]
+    }
+  ]
+}

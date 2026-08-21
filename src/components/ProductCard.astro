@@ -1,0 +1,50 @@
+---
+import type { ProductEntry } from '../lib/products';
+import { categoryFilterKey, isFreeProduct } from '../lib/products';
+import { formatProductPrice } from '../lib/formatPrice';
+
+interface Props {
+  product: ProductEntry;
+  eager?: boolean;
+}
+
+const { product, eager = false } = Astro.props;
+const { title, permalink, cover, price, regular_price, currency, categories } = product.data;
+const display = formatProductPrice(price, regular_price, currency);
+const free = isFreeProduct(product);
+const categoryKeys = categories.map(categoryFilterKey).filter(Boolean);
+---
+
+<li
+  class="product-card"
+  data-product-card
+  data-categories={categoryKeys.join('|')}
+  data-free={free ? 'true' : 'false'}
+>
+  <a class="product-card__link" href={permalink}>
+    <div class="product-card__media">
+      {cover ? (
+        <img
+          src={cover}
+          alt={title}
+          loading={eager ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchpriority={eager ? 'high' : 'auto'}
+        />
+      ) : (
+        <div class="image-placeholder" role="img" aria-label={`${title} image unavailable`}>
+          Image unavailable
+        </div>
+      )}
+      {free ? (
+        <span class="store-badge">Free</span>
+      ) : display.hasDiscount ? (
+        <span class="store-badge store-badge--sale">Sale</span>
+      ) : null}
+    </div>
+    <div class="product-card__body">
+      <h2>{title}</h2>
+      <span>{free ? 'Free' : display.active || 'Price unavailable'}</span>
+    </div>
+  </a>
+</li>

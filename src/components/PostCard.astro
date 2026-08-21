@@ -1,0 +1,40 @@
+---
+import type { PostEntry } from '../lib/posts';
+import { formatDate } from '../lib/formatDate';
+import { postExcerpt } from '../lib/posts';
+
+interface Props {
+  post: PostEntry;
+  eager?: boolean;
+}
+
+const { post, eager = false } = Astro.props;
+const { title, permalink, cover, published_at, categories } = post.data;
+const date = formatDate(published_at);
+const excerpt = postExcerpt(post);
+---
+
+<li class="journal-card">
+  <a class="journal-card__link" href={permalink}>
+    <div class="journal-card__media">
+      {cover ? (
+        <img
+          src={cover}
+          alt={title}
+          loading={eager ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchpriority={eager ? 'high' : 'auto'}
+        />
+      ) : (
+        <div class="image-placeholder" role="img" aria-label={`${title} image unavailable`}>
+          Image unavailable
+        </div>
+      )}
+    </div>
+    <div class="journal-card__content">
+      <span>{categories[0] || 'Journal'}{date ? ` · ${date}` : ''}</span>
+      <h2>{title}</h2>
+      {excerpt && <p>{excerpt}</p>}
+    </div>
+  </a>
+</li>

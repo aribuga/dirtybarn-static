@@ -1,0 +1,82 @@
+---
+interface Props {
+  section?: 'assets' | 'journal' | 'about';
+}
+
+const { section } = Astro.props;
+const navigation = [
+  { href: '/', label: 'Assets', section: 'assets' },
+  { href: '/blog/', label: 'Journal', section: 'journal' },
+  { href: '/about/', label: 'About', section: 'about' },
+] as const;
+---
+
+<header class="store-header" data-site-header>
+  <div class="store-shell store-header__inner">
+    <a class="store-brand" href="/" aria-label="Dirtybarn home">
+      <img src="/assets/dirtybarn-logo.webp" alt="Dirtybarn" width="1080" height="215" />
+    </a>
+
+    <nav class="store-nav" id="primary-navigation" aria-label="Primary navigation" data-site-nav>
+      {navigation.map((item) => (
+        <a href={item.href} aria-current={section === item.section ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+      <button
+        class="store-nav__search"
+        type="button"
+        data-search-open
+        aria-controls="site-search"
+        aria-expanded="false"
+      >
+        Search
+      </button>
+    </nav>
+
+    <div class="store-header__actions">
+      <button
+        class="button button--quiet store-header__search"
+        type="button"
+        data-search-open
+        aria-controls="site-search"
+        aria-expanded="false"
+      >
+        Search <span aria-hidden="true">⌘K</span>
+      </button>
+      <button
+        class="icon-button store-menu-button"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="primary-navigation"
+        aria-expanded="false"
+        data-menu-toggle
+      >
+        <span aria-hidden="true">Menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.querySelector<HTMLElement>('[data-site-header]');
+  const menu = header?.querySelector<HTMLElement>('[data-site-nav]');
+  const menuButton = header?.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+
+  function closeMenu() {
+    menu?.classList.remove('is-open');
+    menuButton?.setAttribute('aria-expanded', 'false');
+    if (menuButton) menuButton.setAttribute('aria-label', 'Open menu');
+  }
+
+  menuButton?.addEventListener('click', () => {
+    const open = !menu?.classList.contains('is-open');
+    menu?.classList.toggle('is-open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
+</script>

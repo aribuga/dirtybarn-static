@@ -1,0 +1,135 @@
+---
+interface Props {
+  title: string;
+  cover?: string;
+  gallery?: string[];
+}
+
+const { title, cover = '', gallery = [] } = Astro.props;
+const images = [...new Set([cover, ...gallery].filter(Boolean))];
+const multiple = images.length > 1;
+---
+
+<section
+  class:list={['product-gallery', { 'product-gallery--slider': multiple }]}
+  aria-label={`${title} image gallery`}
+  data-product-slider={multiple ? '' : undefined}
+  tabindex={multiple ? '0' : undefined}
+>
+  {images.length ? (
+    <>
+      <div class="product-gallery__viewport">
+        <div class="product-gallery__track" aria-live="polite">
+          {images.map((image, index) => (
+            <figure
+              class:list={['product-gallery__slide', { 'is-active': index === 0 }]}
+              data-gallery-slide
+              hidden={index !== 0}
+            >
+              <img
+                src={image}
+                alt={index === 0 ? title : `${title} gallery image ${index + 1}`}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                fetchpriority={index === 0 ? 'high' : 'auto'}
+              />
+              <div class="image-placeholder gallery-image-fallback" role="img" aria-label="Image unavailable" hidden>
+                Image unavailable
+              </div>
+            </figure>
+          ))}
+        </div>
+        {multiple && (
+          <>
+            <button class="product-gallery__arrow product-gallery__arrow--prev" type="button" data-slider-prev aria-label="Previous image">←</button>
+            <button class="product-gallery__arrow product-gallery__arrow--next" type="button" data-slider-next aria-label="Next image">→</button>
+            <div class="product-gallery__counter"><span data-slider-current>01</span> / <span data-slider-total>{String(images.length).padStart(2, '0')}</span></div>
+          </>
+        )}
+      </div>
+      {multiple && (
+        <div class="product-gallery__thumbs" aria-label="Product image thumbnails">
+          {images.map((image, index) => (
+            <button
+              type="button"
+              data-slider-thumb={index}
+              aria-current={index === 0 ? 'true' : undefined}
+              aria-label={`Show image ${index + 1}`}
+            >
+              <img src={image} alt="" loading="lazy" decoding="async" />
+            </button>
+          ))}
+        </div>
+      )}
+    </>
+  ) : (
+    <div class="image-placeholder image-placeholder--large" role="img" aria-label={`${title} image unavailable`}>
+      Image unavailable
+    </div>
+  )}
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-product-slider]').forEach((slider) => {
+    const slides = [...slider.querySelectorAll<HTMLElement>('[data-gallery-slide]')];
+    const thumbs = [...slider.querySelectorAll<HTMLButtonElement>('[data-slider-thumb]')];
+    const current = slider.querySelector<HTMLElement>('[data-slider-current]');
+    let index = 0;
+
+    function show(nextIndex: number) {
+      if (!slides.length) return;
+      index = (nextIndex + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        const active = slideIndex === index;
+        slide.hidden = !active;
+        slide.classList.toggle('is-active', active);
+      });
+      thumbs.forEach((thumb, thumbIndex) => {
+        if (thumbIndex === index) thumb.setAttribute('aria-current', 'true');
+        else thumb.removeAttribute('aria-current');
+      });
+      if (current) current.textContent = String(index + 1).padStart(2, '0');
+    }
+
+    slider.querySelector('[data-slider-prev]')?.addEventListener('click', () => show(index - 1));
+    slider.querySelector('[data-slider-next]')?.addEventListener('click', () => show(index + 1));
+    thumbs.forEach((thumb, thumbIndex) => thumb.addEventListener('click', () => show(thumbIndex)));
+    slider.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        show(index - 1);
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        show(index + 1);
+      }
+    });
+
+    let touchStartX = 0;
+    slider.querySelector('.product-gallery__viewport')?.addEventListener(
+      'touchstart',
+      (event) => {
+        touchStartX = (event as TouchEvent).changedTouches[0]?.clientX || 0;
+      },
+      { passive: true },
+    );
+    slider.querySelector('.product-gallery__viewport')?.addEventListener(
+      'touchend',
+      (event) => {
+        const touchEndX = (event as TouchEvent).changedTouches[0]?.clientX || touchStartX;
+        const delta = touchEndX - touchStartX;
+        if (Math.abs(delta) > 45) show(index + (delta < 0 ? 1 : -1));
+      },
+      { passive: true },
+    );
+
+    slider.querySelectorAll<HTMLImageElement>('.product-gallery__slide img').forEach((image) => {
+      image.addEventListener('error', () => {
+        image.hidden = true;
+        const fallback = image.parentElement?.querySelector<HTMLElement>('.gallery-image-fallback');
+        if (fallback) fallback.hidden = false;
+      });
+    });
+    show(0);
+  });
+</script>

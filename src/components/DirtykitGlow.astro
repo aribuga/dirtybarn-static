@@ -1,0 +1,97 @@
+---
+import '../styles/dirtykit.css';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div
+  class:list={['dirtykit-glow', className]}
+  data-dirtykit-glow
+  role="img"
+  aria-label="Interactive abstract green light moving across a black field"
+>
+  <div class="dirtykit-glow__field" aria-hidden="true">
+    <div class="dirtykit-glow__halo"></div>
+    <div class="dirtykit-glow__orb">
+      <span class="dirtykit-glow__core"></span>
+      <span class="dirtykit-glow__ring"></span>
+    </div>
+  </div>
+  <p class="dirtykit-glow__caption" aria-hidden="true">
+    <span></span> Move to reshape
+  </p>
+</div>
+
+<script>
+  const glowFields = document.querySelectorAll<HTMLElement>('[data-dirtykit-glow]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reducedMotion) {
+    glowFields.forEach((glow) => {
+      if (glow.dataset.dirtykitGlowReady === 'true') return;
+      glow.dataset.dirtykitGlowReady = 'true';
+
+      const orb = glow.querySelector<HTMLElement>('.dirtykit-glow__orb');
+      const field = glow.querySelector<HTMLElement>('.dirtykit-glow__field');
+      let frame = 0;
+      let pointerX = 0.5;
+      let pointerY = 0.52;
+
+      const render = () => {
+        frame = 0;
+        const x = pointerX * 100;
+        const y = pointerY * 100;
+        const horizontal = 0.88 + Math.abs(pointerX - 0.5) * 0.42;
+        const vertical = 1.08 - Math.abs(pointerY - 0.5) * 0.24;
+        const rotate = (pointerX - 0.5) * 42 + (pointerY - 0.5) * -18;
+
+        glow.style.setProperty('--glow-x', `${x.toFixed(2)}%`);
+        glow.style.setProperty('--glow-y', `${y.toFixed(2)}%`);
+        glow.style.setProperty('--orb-scale-x', horizontal.toFixed(3));
+        glow.style.setProperty('--orb-scale-y', vertical.toFixed(3));
+        glow.style.setProperty('--orb-rotate', `${rotate.toFixed(2)}deg`);
+
+        const topLeft = 36 + Math.round(pointerY * 22);
+        const topRight = 62 - Math.round(pointerX * 18);
+        const bottomRight = 42 + Math.round(pointerX * 20);
+        const bottomLeft = 66 - Math.round(pointerY * 20);
+        orb?.style.setProperty(
+          '--active-shape',
+          `${topLeft}% ${topRight}% ${bottomRight}% ${bottomLeft}% / ` +
+            `${bottomLeft}% ${topLeft}% ${topRight}% ${bottomRight}%`,
+        );
+      };
+
+      const queueRender = () => {
+        if (!frame) frame = window.requestAnimationFrame(render);
+      };
+
+      const updatePointer = (event: PointerEvent) => {
+        const bounds = glow.getBoundingClientRect();
+        pointerX = Math.min(0.84, Math.max(0.16, (event.clientX - bounds.left) / bounds.width));
+        pointerY = Math.min(0.82, Math.max(0.18, (event.clientY - bounds.top) / bounds.height));
+        queueRender();
+      };
+
+      glow.addEventListener('pointerenter', (event) => {
+        if (!glow.classList.contains('is-active')) {
+          const bounds = glow.getBoundingClientRect();
+          const fieldBounds = field?.getBoundingClientRect();
+          if (fieldBounds) {
+            pointerX = (fieldBounds.left + fieldBounds.width / 2 - bounds.left) / bounds.width;
+            pointerY = (fieldBounds.top + fieldBounds.height / 2 - bounds.top) / bounds.height;
+            render();
+          }
+          glow.classList.add('is-active');
+          void glow.offsetWidth;
+        }
+        updatePointer(event);
+      });
+      glow.addEventListener('pointermove', updatePointer, { passive: true });
+    });
+  }
+</script>

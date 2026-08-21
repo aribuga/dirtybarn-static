@@ -1,0 +1,26 @@
+---
+interface Props {
+  url?: string;
+  price?: string | null;
+}
+
+const { url = '', price = null } = Astro.props;
+const rawUrl = url.trim();
+let safeUrl = '';
+if (rawUrl) {
+  try {
+    const parsed = new URL(rawUrl);
+    if (['http:', 'https:'].includes(parsed.protocol)) safeUrl = parsed.toString();
+  } catch {
+    // Invalid external URLs are treated as unavailable.
+  }
+}
+---
+
+{safeUrl ? (
+  <a class="button button--primary product-info__cta" href={safeUrl} target="_blank" rel="noopener noreferrer">
+    Buy on Gumroad{price ? ` · ${price}` : ''}
+  </a>
+) : (
+  <span class="button button--disabled product-info__cta" aria-disabled="true">Available soon</span>
+)}

@@ -1,0 +1,18 @@
+---
+import type { PostEntry } from '../lib/posts';
+import PostCard from './PostCard.astro';
+
+interface Props {
+  posts: PostEntry[];
+}
+
+const { posts } = Astro.props;
+---
+
+{posts.length ? (
+  <ul class="journal-grid">
+    {posts.map((post, index) => <PostCard post={post} eager={index < 2} />)}
+  </ul>
+) : (
+  <p class="muted-text">No published posts are available yet.</p>
+)}

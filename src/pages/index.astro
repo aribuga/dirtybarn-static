@@ -1,0 +1,28 @@
+---
+import HomeDirtykitFeature from '../components/HomeDirtykitFeature.astro';
+import JournalStrip from '../components/JournalStrip.astro';
+import ProductCatalog from '../components/ProductCatalog.astro';
+import { SITE_DESCRIPTION, SITE_NAME } from '../config';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getPublishedProducts } from '../lib/products';
+import { getPublishedPosts } from '../lib/posts';
+
+const [products, posts] = await Promise.all([getPublishedProducts(), getPublishedPosts()]);
+---
+
+<BaseLayout title={SITE_NAME} description={SITE_DESCRIPTION} canonicalPath="/" section="assets">
+  <section class="store-shell store-intro">
+    <div>
+      <p class="store-kicker">Independent asset library</p>
+      <h1>step into the barn, get dirty &amp; wealthy.</h1>
+    </div>
+    <div class="store-intro__aside">
+      <p>3D objects, templates, effects, textures and small systems for image-making. Dirtykit brings nearly the whole library together.</p>
+      <a href="#catalog">Browse latest ↓</a>
+    </div>
+  </section>
+
+  <HomeDirtykitFeature />
+  <ProductCatalog products={products} />
+  <JournalStrip posts={posts} />
+</BaseLayout>

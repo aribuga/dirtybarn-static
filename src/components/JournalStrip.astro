@@ -1,0 +1,33 @@
+---
+import type { PostEntry } from '../lib/posts';
+import { formatDate } from '../lib/formatDate';
+
+interface Props {
+  posts: PostEntry[];
+}
+
+const { posts } = Astro.props;
+---
+
+{posts.length > 0 && (
+  <section class="store-shell store-journal-strip">
+    <div class="store-section-head">
+      <div>
+        <p class="store-kicker">02 / Journal</p>
+        <h2>Notes around the files</h2>
+      </div>
+      <a href="/blog/">All articles ↗</a>
+    </div>
+    <div class="journal-mini-grid">
+      {posts.slice(0, 3).map((post) => (
+        <a href={post.data.permalink}>
+          <span>
+            {post.data.categories[0] || 'Journal'}
+            {formatDate(post.data.published_at) ? ` · ${formatDate(post.data.published_at)}` : ''}
+          </span>
+          <strong>{post.data.title}</strong>
+        </a>
+      ))}
+    </div>
+  </section>
+)}

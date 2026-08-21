@@ -1,0 +1,180 @@
+---
+import type { ProductEntry } from '../lib/products';
+import { categoryFilterKey, isFreeProduct } from '../lib/products';
+import ProductGrid from './ProductGrid.astro';
+
+interface Props {
+  products: ProductEntry[];
+}
+
+const { products } = Astro.props;
+const categoryCounts = new Map<string, number>();
+for (const product of products) {
+  for (const category of product.data.categories) {
+    if (category.toLowerCase() === 'free') continue;
+    categoryCounts.set(category, (categoryCounts.get(category) || 0) + 1);
+  }
+}
+const categories = [...categoryCounts]
+  .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0], 'en'))
+  .slice(0, 6)
+  .map(([label]) => ({ label, key: categoryFilterKey(label) }));
+const hasFreeProducts = products.some(isFreeProduct);
+---
+
+<section class="store-shell store-catalog" id="catalog" aria-labelledby="catalog-title" data-catalog-root>
+  <div class="store-section-head">
+    <div>
+      <p class="store-kicker">01 / Assets</p>
+      <h2 id="catalog-title">Latest to oldest</h2>
+    </div>
+    <div class="store-filter" aria-label="Filter assets">
+      <button type="button" aria-pressed="true" data-product-filter="all">All</button>
+      {categories.map((category) => (
+        <button type="button" aria-pressed="false" data-product-filter={category.key}>
+          {category.label}
+        </button>
+      ))}
+      {hasFreeProducts && (
+        <button type="button" aria-pressed="false" data-product-filter="free">Free</button>
+      )}
+    </div>
+  </div>
+
+  <ProductGrid products={products} />
+
+  <nav class="store-pagination" data-product-pagination data-page-size="8" aria-label="Asset pages">
+    <button class="store-pagination__move" type="button" data-pagination-prev aria-label="Previous asset page">
+      ← Previous
+    </button>
+    <div class="store-pagination__pages" data-pagination-pages></div>
+    <span class="store-pagination__status" data-pagination-status aria-live="polite"></span>
+    <button class="store-pagination__move" type="button" data-pagination-next aria-label="Next asset page">
+      Next →
+    </button>
+  </nav>
+</section>
+
+<script>
+  const catalog = document.querySelector<HTMLElement>('[data-catalog-root]');
+  if (catalog) {
+    const catalogRoot = catalog;
+    const filters = [...catalogRoot.querySelectorAll<HTMLButtonElement>('[data-product-filter]')];
+    const cards = [...catalogRoot.querySelectorAll<HTMLElement>('[data-product-card]')];
+    const pagination = catalogRoot.querySelector<HTMLElement>('[data-product-pagination]');
+    const pagesHost = pagination?.querySelector<HTMLElement>('[data-pagination-pages]');
+    const status = pagination?.querySelector<HTMLElement>('[data-pagination-status]');
+    const previous = pagination?.querySelector<HTMLButtonElement>('[data-pagination-prev]');
+    const next = pagination?.querySelector<HTMLButtonElement>('[data-pagination-next]');
+    const pageSize = Number(pagination?.dataset.pageSize || 8);
+    const allowedFilters = new Set(filters.map((button) => button.dataset.productFilter || 'all'));
+    let params = new URLSearchParams(location.search);
+    let activeFilter = allowedFilters.has(params.get('filter') || '') ? params.get('filter') || 'all' : 'all';
+    let currentPage = Math.max(1, Number(params.get('page')) || 1);
+
+    function pageWindow(totalPages: number) {
+      if (totalPages <= 7) return Array.from({ length: totalPages }, (_, index) => index + 1);
+      const values: Array<number | string> = [1];
+      const start = Math.max(2, currentPage - 1);
+      const end = Math.min(totalPages - 1, currentPage + 1);
+      if (start > 2) values.push('start');
+      for (let page = start; page <= end; page += 1) values.push(page);
+      if (end < totalPages - 1) values.push('end');
+      values.push(totalPages);
+      return values;
+    }
+
+    function matches(card: HTMLElement) {
+      if (activeFilter === 'all') return true;
+      if (activeFilter === 'free') return card.dataset.free === 'true';
+      return (card.dataset.categories || '').split('|').includes(activeFilter);
+    }
+
+    function syncUrl(mode: 'replace' | 'push') {
+      const nextParams = new URLSearchParams(location.search);
+      activeFilter === 'all' ? nextParams.delete('filter') : nextParams.set('filter', activeFilter);
+      currentPage === 1 ? nextParams.delete('page') : nextParams.set('page', String(currentPage));
+      const query = nextParams.toString();
+      const hasCatalogState = activeFilter !== 'all' || currentPage !== 1;
+      const hash = mode === 'push' || hasCatalogState || location.hash === '#catalog'
+        ? '#catalog'
+        : location.hash;
+      history[mode === 'push' ? 'pushState' : 'replaceState'](
+        null,
+        '',
+        `${location.pathname}${query ? `?${query}` : ''}${hash}`,
+      );
+    }
+
+    function render({ historyMode = 'replace', scroll = false }: {
+      historyMode?: 'replace' | 'push';
+      scroll?: boolean;
+    } = {}) {
+      const matchingCards = cards.filter(matches);
+      const totalPages = Math.max(1, Math.ceil(matchingCards.length / pageSize));
+      currentPage = Math.min(currentPage, totalPages);
+      const first = (currentPage - 1) * pageSize;
+      const last = first + pageSize;
+      cards.forEach((card) => (card.hidden = true));
+      matchingCards.slice(first, last).forEach((card) => (card.hidden = false));
+      filters.forEach((button) =>
+        button.setAttribute('aria-pressed', String(button.dataset.productFilter === activeFilter)),
+      );
+
+      if (pagination && pagesHost && status && previous && next) {
+        pagination.hidden = matchingCards.length <= pageSize;
+        pagesHost.replaceChildren();
+        for (const value of pageWindow(totalPages)) {
+          if (typeof value === 'string') {
+            const ellipsis = document.createElement('span');
+            ellipsis.className = 'store-pagination__ellipsis';
+            ellipsis.textContent = '…';
+            ellipsis.setAttribute('aria-hidden', 'true');
+            pagesHost.append(ellipsis);
+            continue;
+          }
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.textContent = String(value);
+          button.setAttribute('aria-label', `Asset page ${value}`);
+          if (value === currentPage) button.setAttribute('aria-current', 'page');
+          button.addEventListener('click', () => {
+            currentPage = value;
+            render({ historyMode: 'push', scroll: true });
+          });
+          pagesHost.append(button);
+        }
+        previous.disabled = currentPage === 1;
+        next.disabled = currentPage === totalPages;
+        status.textContent = `${matchingCards.length ? first + 1 : 0}–${Math.min(last, matchingCards.length)} of ${matchingCards.length}`;
+      }
+      syncUrl(historyMode);
+      if (scroll) catalogRoot.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    filters.forEach((button) =>
+      button.addEventListener('click', () => {
+        activeFilter = button.dataset.productFilter || 'all';
+        currentPage = 1;
+        render({ historyMode: 'push' });
+      }),
+    );
+    previous?.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage -= 1;
+        render({ historyMode: 'push', scroll: true });
+      }
+    });
+    next?.addEventListener('click', () => {
+      currentPage += 1;
+      render({ historyMode: 'push', scroll: true });
+    });
+    addEventListener('popstate', () => {
+      params = new URLSearchParams(location.search);
+      activeFilter = allowedFilters.has(params.get('filter') || '') ? params.get('filter') || 'all' : 'all';
+      currentPage = Math.max(1, Number(params.get('page')) || 1);
+      render();
+    });
+    render();
+  }
+</script>
